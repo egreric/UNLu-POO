@@ -11,6 +11,10 @@ public class CuartaClase {
 		double radio;
 		int n;
 		
+		java.util.LinkedList unaLista = null;
+		
+		unaLista.clear();
+		   
 		System.out.println("Me decis tu nombre por favor?: ");
 		nombre = sc.nextLine();
 		System.out.println("Hola " + nombre);
