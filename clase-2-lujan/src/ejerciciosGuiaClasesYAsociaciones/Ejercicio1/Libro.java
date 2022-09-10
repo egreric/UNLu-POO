@@ -7,7 +7,6 @@ public class Libro {
 	private int cantidadDeEjemplares;
 	private int cantidadDeEjemplaresPrestados;
 	private int cantidadDePaginas;
-	private String descripcion;
 	
 	// Metodos para instanciacion de libros sin ISBN
 	public Libro (String titulo, String autor, int cantPaginas, int cantEjemplares) {
@@ -17,17 +16,63 @@ public class Libro {
 		this.cantidadDeEjemplares = cantEjemplares;
 		this.cantidadDeEjemplaresPrestados = 0;
 		this.cantidadDePaginas = cantPaginas;
-		this.descripcion = new String ("El libro '" + this.titulo + "' creado por el autor '" + this.autor + "' tiene " 
-		+ this.cantidadDePaginas + " paginas," + " quedan " + cantidadDeEjemplaresDisponibles() + " disponibles y se prestaron " + this.cantidadDeEjemplaresPrestados + " ejemplares." );
 	}
 	
-	private int cantidadDeEjemplaresDisponibles() {
+	// Metodos para instanciacion de libros con ISBN
+	public Libro (String titulo, String autor, String isbn, int cantPaginas, int cantEjemplares) {
+		this.titulo = new String(titulo);
+		this.autor = new String(autor);
+		this.isbn = new String (isbn);
+		this.cantidadDeEjemplares = cantEjemplares;
+		this.cantidadDeEjemplaresPrestados = 0;
+		this.cantidadDePaginas = cantPaginas;
+	}
+	
+	public int cantidadDeEjemplaresDisponibles() {
 		return (this.cantidadDeEjemplares - this.cantidadDeEjemplaresPrestados);
 	}
 	
-	public String getDescripcion() {
-		return this.descripcion;	
+	public String getTitulo() {
+		return this.titulo;
 	}
-	// Metodos para instanciacion de libros con ISBN
 	
+	public String getAutor() {
+		return this.autor;
+	}
+	
+	public String getISBN() {
+		return this.isbn;
+	}
+	
+	public int getCantidadDePaginas() {
+		return this.cantidadDePaginas;
+	}
+	
+	public int getCantidadDeEjemplares() {
+		return this.cantidadDeEjemplares;
+	}
+	
+	public int getCantidadDeEjemplaresPrestados() {
+		return this.cantidadDeEjemplaresPrestados;
+	}
+	
+	public String getDescripcion() {
+		return ("El libro '" + this.titulo + "' creado por el autor '" + this.autor + "' tiene "
+				+ this.cantidadDePaginas + " paginas, quedan " + cantidadDeEjemplaresDisponibles() + " ejemplares disponibles y se prestaron " + this.cantidadDeEjemplaresPrestados + " ejemplares." );
+	}
+	
+	public void prestar() {
+		this.cantidadDeEjemplaresPrestados++;
+	}
+	
+	public boolean disponibleParaPrestamo() {
+		if (cantidadDeEjemplaresDisponibles() > 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	
+
 }
